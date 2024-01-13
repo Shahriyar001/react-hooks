@@ -4,9 +4,12 @@ const UseState = () => {
   const [counter, setCounter] = useState(0);
 
   const handleIncrement = () => {
-    setCounter((prvStatus) => prvStatus + 1);
-    setCounter((prvStatus) => prvStatus + 1);
-    setCounter((prvStatus) => prvStatus + 1);
+    setCounter(counter + 1);
+  };
+  const handleAsyncIncrement = () => {
+    setTimeout(() => {
+      setCounter((prvState) => prvState + 1);
+    }, 2000);
   };
 
   console.log("render");
@@ -18,7 +21,7 @@ const UseState = () => {
       </button>
       <button
         className="btn btn-primary gap-2 mx-4"
-        onClick={() => setCounter((prvStatus) => prvStatus - 1)}
+        onClick={handleAsyncIncrement}
       >
         Decrement
       </button>
