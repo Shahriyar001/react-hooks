@@ -1,13 +1,17 @@
 import { useReducer } from "react";
 
-const initialState = { count: 0 };
+const initialState = { name: "", email: "" };
 
 const reducer = (currentState, action) => {
+  console.log(currentState);
+  console.log("===", action);
   switch (action.type) {
-    case "increment":
-      return { count: currentState.count + 1 };
+    case "addName":
+      return { ...currentState, name: action.payload };
+    case "adddEmail":
+      return { ...currentState, email: action.payload };
     case "decrement":
-      return { count: currentState.count - 1 };
+      return;
     default:
       return currentState;
   }
@@ -16,21 +20,37 @@ const reducer = (currentState, action) => {
 const UseReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(state);
+  };
+
   return (
     <div>
-      <h1>{state.count}</h1>
-      <button
-        onClick={() => dispatch({ type: "increment" })}
-        className="btn btn-primary"
-      >
-        Increment
-      </button>
-      <button
-        onClick={() => dispatch({ type: "decrement" })}
-        className="btn btn-primary mx-2"
-      >
-        Decrement
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          onClick={(e) =>
+            dispatch({ type: "addName", playLoad: e.target.value })
+          }
+          type="text"
+          name="name"
+          id="name"
+          className="border border-2"
+        />
+        <input
+          onChange={(e) =>
+            dispatch({ type: "addEmail", playLoad: e.target.value })
+          }
+          type="email"
+          name="email"
+          id="email"
+        />
+        <button className="" type="submit">
+          Submit
+        </button>
+        {/* <h1>{name}</h1> */}
+        {/* <h1>{email}</h1> */}
+      </form>
     </div>
   );
 };
