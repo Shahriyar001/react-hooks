@@ -1,20 +1,27 @@
 import { useRef, useState } from "react";
 
 const Useref = () => {
-  const [count, setCount] = useState(0);
-  const myRef = useRef(0);
+  const myRef = useRef(null);
 
-  const increment = () => {
-    myRef.current = myRef.current + 1;
-    setCount(count + 1);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(myRef.current.value);
   };
 
   return (
     <div>
       <h1>UseRef</h1>
-      <button onClick={() => increment()} className="btn btn-primary">
-        {myRef.current}
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          ref={myRef}
+          type="text"
+          className="border border-red-500"
+          name="name"
+          id="name"
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };
