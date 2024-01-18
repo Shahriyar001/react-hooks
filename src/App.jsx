@@ -1,15 +1,17 @@
 import "./App.css";
-import UseEffect from "./pages/UseEffect";
-import UseReducer from "./pages/UseReducer";
-// import UseState from "./pages/UseState";
+// import UseEffect from "./pages/UseEffect";
+// import UseReducer from "./pages/UseReducer";
+import UseState from "./pages/UseState";
+import Useref from "./pages/Useref";
 // import UseStateExample from "./pages/useStateExample";
 function App() {
   return (
     <div>
-      {/* <UseState /> */}
+      <UseState />
       {/* <UseStateExample /> */}
       {/* <UseReducer></UseReducer> */}
-      <UseEffect />
+      {/* <UseEffect /> */}
+      <Useref />
     </div>
   );
 }
