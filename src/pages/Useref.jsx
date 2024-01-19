@@ -1,25 +1,17 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import CustomInput from "../Componant/CustomInput";
 
 const Useref = () => {
   const myRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(myRef.current.value);
-  };
-
+  useEffect(() => {
+    myRef?.current?.focus();
+  }, []);
   return (
     <div>
       <h1>UseRef</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          ref={myRef}
-          type="text"
-          className="border border-red-500"
-          name="name"
-          id="name"
-        />
+      <form>
+        <CustomInput className="border border-blue-500" />
         <button type="submit">Submit</button>
       </form>
     </div>
